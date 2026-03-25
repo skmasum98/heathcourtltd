@@ -1,120 +1,402 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-
-// Mock Product Data (In a real app, this would come from a CMS or Content Collections)
+// Enhanced Product Data - 30+ products
 const products = [
-  { id: 'HC-001', name: 'Stainless Steel Cookware Set', category: 'Kitchenware', moq: '10 Units', carton: '2 Sets', image: 'https://images.unsplash.com/photo-1584990344321-27682ad0f994?auto=format&fit=crop&q=80&w=400' },
-  { id: 'HC-002', name: 'Microfibre Cleaning Cloths (50pk)', category: 'Cleaning', moq: '20 Packs', carton: '10 Packs', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400' },
-  { id: 'HC-003', name: 'Ceramic Dinner Plate - White', category: 'Kitchenware', moq: '48 Units', carton: '12 Units', image: 'https://images.unsplash.com/photo-1574199960812-3bb320659db3?auto=format&fit=crop&q=80&w=400' },
-  { id: 'HC-004', name: 'Glass Storage Jars (Set of 3)', category: 'Storage', moq: '15 Units', carton: '5 Sets', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400' },
-  { id: 'HC-005', name: 'Industrial Floor Mop Head', category: 'Cleaning', moq: '30 Units', carton: '10 Units', image: 'https://images.unsplash.com/photo-1585833014768-fb66117db5e5?auto=format&fit=crop&q=80&w=400' },
-  { id: 'HC-006', name: 'Velvet Clothes Hangers (20pk)', category: 'Storage', moq: '25 Packs', carton: '5 Packs', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400' },
+  // Kitchenware (10 products)
+  { id: 'HC-001', name: 'Stainless Steel Cookware Set', category: 'Kitchenware', moq: '10 Units', carton: '2 Sets', image: 'https://m.media-amazon.com/images/I/71dVSE4KoSL._AC_SL1500_.jpg', price: 'POA', inStock: true },
+  { id: 'HC-002', name: 'Non-Stick Frying Pan 28cm', category: 'Kitchenware', moq: '24 Units', carton: '6 Units', image: 'https://m.media-amazon.com/images/I/711IZzoqtCL._AC_SL1500_.jpg', price: 'POA', inStock: true },
+  { id: 'HC-003', name: 'Ceramic Dinner Plate - White', category: 'Kitchenware', moq: '48 Units', carton: '12 Units', image: 'https://m.media-amazon.com/images/I/51XggttDXPL._AC_SL1500_.jpg', price: 'POA', inStock: true },
+  { id: 'HC-007', name: 'Professional Chef Knife Set', category: 'Kitchenware', moq: '15 Sets', carton: '5 Sets', image: 'https://images.unsplash.com/photo-1593618998160-e34014e67546?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-008', name: 'Glass Mixing Bowls (Set of 3)', category: 'Kitchenware', moq: '20 Sets', carton: '10 Sets', image: 'https://images.unsplash.com/photo-1584990344321-27682ad0f994?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-009', name: 'Silicone Baking Mat Set', category: 'Kitchenware', moq: '30 Sets', carton: '15 Sets', image: 'https://images.unsplash.com/photo-1584990344321-27682ad0f994?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-010', name: 'Cast Iron Dutch Oven', category: 'Kitchenware', moq: '12 Units', carton: '3 Units', image: 'https://images.unsplash.com/photo-1584990344321-27682ad0f994?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: false },
+  { id: 'HC-011', name: 'Measuring Cups & Spoons Set', category: 'Kitchenware', moq: '50 Sets', carton: '25 Sets', image: 'https://images.unsplash.com/photo-1584990344321-27682ad0f994?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-012', name: 'Wooden Chopping Board Set', category: 'Kitchenware', moq: '24 Sets', carton: '8 Sets', image: 'https://images.unsplash.com/photo-1584990344321-27682ad0f994?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-013', name: 'Kitchen Utensil Set (12pcs)', category: 'Kitchenware', moq: '20 Sets', carton: '10 Sets', image: 'https://images.unsplash.com/photo-1584990344321-27682ad0f994?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  
+  // Cleaning (8 products)
+  { id: 'HC-004', name: 'Microfibre Cleaning Cloths (50pk)', category: 'Cleaning', moq: '20 Packs', carton: '10 Packs', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-005', name: 'Industrial Floor Mop Head', category: 'Cleaning', moq: '30 Units', carton: '10 Units', image: 'https://images.unsplash.com/photo-1585833014768-fb66117db5e5?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-014', name: 'Spray Mop System', category: 'Cleaning', moq: '15 Units', carton: '5 Units', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-015', name: 'Heavy Duty Scrub Brushes (12pk)', category: 'Cleaning', moq: '24 Packs', carton: '12 Packs', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-016', name: 'Rubber Squeegee 45cm', category: 'Cleaning', moq: '36 Units', carton: '12 Units', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-017', name: 'All-Purpose Cleaning Spray (12pk)', category: 'Cleaning', moq: '24 Packs', carton: '12 Packs', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: false },
+  { id: 'HC-018', name: 'Bucket with Wringer System', category: 'Cleaning', moq: '12 Units', carton: '4 Units', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-019', name: 'Dustpan & Brush Set (24pk)', category: 'Cleaning', moq: '24 Sets', carton: '12 Sets', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  
+  // Storage (7 products)
+  { id: 'HC-006', name: 'Velvet Clothes Hangers (20pk)', category: 'Storage', moq: '25 Packs', carton: '5 Packs', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-020', name: 'Clear Storage Boxes (Set of 4)', category: 'Storage', moq: '20 Sets', carton: '10 Sets', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-021', name: 'Under Bed Storage Bag', category: 'Storage', moq: '30 Units', carton: '15 Units', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-022', name: 'Stackable Drawer Organizer', category: 'Storage', moq: '48 Units', carton: '24 Units', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-023', name: 'Wardrobe Storage Bags (3pk)', category: 'Storage', moq: '24 Packs', carton: '12 Packs', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: false },
+  { id: 'HC-024', name: 'Shoe Storage Box (Stackable)', category: 'Storage', moq: '36 Units', carton: '12 Units', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-025', name: 'Collapsible Storage Cubes', category: 'Storage', moq: '24 Sets', carton: '8 Sets', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  
+  // Decor (5 products)
+  { id: 'HC-026', name: 'Glass Storage Jars (Set of 3)', category: 'Decor', moq: '15 Units', carton: '5 Sets', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-027', name: 'Decorative Ceramic Vase', category: 'Decor', moq: '24 Units', carton: '8 Units', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-028', name: 'Faux Artificial Plant Set', category: 'Decor', moq: '18 Sets', carton: '6 Sets', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-029', name: 'Scented Candle Gift Set', category: 'Decor', moq: '24 Sets', carton: '12 Sets', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: false },
+  { id: 'HC-030', name: 'Wall Mirror - Decorative', category: 'Decor', moq: '12 Units', carton: '4 Units', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-031', name: 'Cushion Cover Set (2pk)', category: 'Decor', moq: '30 Sets', carton: '15 Sets', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
+  { id: 'HC-032', name: 'Rattan Storage Basket', category: 'Decor', moq: '20 Units', carton: '10 Units', image: 'https://images.unsplash.com/photo-1530514120320-c28854460067?auto=format&fit=crop&q=80&w=400', price: 'POA', inStock: true },
 ];
 
 const categories = ['All', 'Kitchenware', 'Cleaning', 'Storage', 'Decor'];
+
+// Featured products for banner
+const featuredCount = products.filter(p => p.inStock).length;
 ---
 
-<Layout title="Product Catalog | Heath Court Ltd Wholesale">
-  
-
+<Layout title="Wholesale Catalog | Heath Court Ltd - UK Household Goods Distributor">
   <main class="bg-white min-h-screen">
-    <!-- 1. PAGE HEADER -->
-    <header class="bg-slate-900 py-16 px-4">
-      <div class="max-w-7xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Wholesale Catalog</h1>
-        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+    <!-- 1. PAGE HEADER - Enhanced with stats -->
+    <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16 md:py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
+      </div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+          <span class="text-blue-400 text-sm font-medium">📦 Bulk Orders Welcome</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+          Wholesale <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Catalog</span>
+        </h1>
+        <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
           High-quality household essentials available for bulk order. 
           Register for a trade account to view full pricing.
         </p>
-      </div>
-    </header>
-
-    <!-- 2. FILTER & TOOLS BAR -->
-    <section class="sticky top-20 z-40 bg-white border-b border-slate-200 shadow-sm py-4 px-4">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <!-- Category Pills -->
-        <div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar w-full md:w-auto">
-          {categories.map(cat => (
-            <button class="whitespace-nowrap px-6 py-2 rounded-full border border-slate-200 text-sm font-medium hover:bg-blue-600 hover:text-white transition-colors">
-              {cat}
-            </button>
-          ))}
-        </div>
-        
-        <!-- Search Bar -->
-        <div class="relative w-full md:w-80">
-          <input type="text" placeholder="Search SKU or Product..." class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
-          <svg class="w-5 h-5 absolute left-3 top-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <div class="flex flex-wrap justify-center gap-6 text-center">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-3">
+            <div class="text-2xl font-bold text-white">{products.length}+</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wide">Products</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-3">
+            <div class="text-2xl font-bold text-white">{featuredCount}</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wide">In Stock</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-3">
+            <div class="text-2xl font-bold text-white">4+</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wide">Categories</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. PRODUCT GRID -->
+    <!-- 2. FILTER & TOOLS BAR - Enhanced with active filter state -->
+    <section class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm py-4 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
+          <!-- Category Pills with active state styling -->
+          <div class="flex gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar w-full lg:w-auto">
+            {categories.map((cat, idx) => (
+              <button 
+                class={`category-filter whitespace-nowrap px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  idx === 0 
+                    ? 'bg-blue-600 text-white shadow-md shadow-blue-200' 
+                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100'
+                }`}
+                data-category={cat.toLowerCase()}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          
+          <!-- Search Bar with icon -->
+          <div class="relative w-full lg:w-80">
+            <input 
+              type="text" 
+              id="search-input"
+              placeholder="Search SKU or Product..." 
+              class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-slate-50 focus:bg-white" 
+            />
+            <svg class="w-5 h-5 absolute left-3 top-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Active filters display -->
+        <div id="active-filters" class="flex items-center gap-2 mt-3 text-xs text-slate-500">
+          <span>Showing:</span>
+          <span id="product-count" class="font-semibold text-blue-600">{products.length}</span>
+          <span>products</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PRODUCT GRID - Enhanced with better cards and animations -->
     <section class="py-12 px-4">
       <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {products.map(product => (
-            <div class="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
-              <!-- Image Container -->
-              <div class="relative aspect-square bg-slate-100 overflow-hidden">
-                <img src={product.image} alt={product.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-slate-700 uppercase tracking-widest shadow-sm border border-slate-100">
-                  SKU: {product.id}
-                </span>
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          {products.map((product, index) => (
+            <div 
+              class="product-card group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              data-category={product.category.toLowerCase()}
+              data-name={product.name.toLowerCase()}
+              data-id={product.id.toLowerCase()}
+              data-index={index}
+            >
+              <!-- Image Container with badge -->
+              <div class="relative aspect-square bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name} 
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                  loading="lazy"
+                />
+                <div class="absolute top-3 left-3 flex gap-2">
+                  <span class="bg-white/95 backdrop-blur-sm px-2 py-1 rounded-lg text-[10px] font-bold text-slate-700 shadow-sm border border-slate-100">
+                    SKU: {product.id}
+                  </span>
+                  {!product.inStock && (
+                    <span class="bg-red-500 text-white px-2 py-1 rounded-lg text-[10px] font-bold shadow-sm">
+                      Out of Stock
+                    </span>
+                  )}
+                </div>
+                {product.inStock && (
+                  <div class="absolute top-3 right-3">
+                    <span class="bg-green-500 text-white px-2 py-1 rounded-lg text-[10px] font-bold shadow-sm">
+                      In Stock
+                    </span>
+                  </div>
+                )}
               </div>
 
               <!-- Product Info -->
-              <div class="p-5 grow">
-                <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-1">{product.category}</p>
-                <h3 class="text-slate-900 font-bold text-lg mb-4 line-clamp-1">{product.name}</h3>
+              <div class="p-5 flex flex-col flex-grow">
+                <div class="mb-2">
+                  <span class="text-blue-600 text-xs font-bold uppercase tracking-wider bg-blue-50 px-2 py-1 rounded">
+                    {product.category}
+                  </span>
+                </div>
+                <h3 class="text-slate-900 font-bold text-base md:text-lg mb-3 line-clamp-2 min-h-[3.5rem]">
+                  {product.name}
+                </h3>
                 
-                <!-- B2B Details Table -->
-                <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-50 mb-6">
+                <!-- B2B Details -->
+                <div class="grid grid-cols-2 gap-3 py-3 border-y border-slate-100 mb-4">
                   <div>
-                    <p class="text-slate-400 text-[10px] uppercase font-bold tracking-tighter">Min. Order (MOQ)</p>
+                    <p class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">Min. Order</p>
                     <p class="text-slate-800 font-semibold text-sm">{product.moq}</p>
                   </div>
                   <div>
-                    <p class="text-slate-400 text-[10px] uppercase font-bold tracking-tighter">Carton Size</p>
+                    <p class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">Carton Size</p>
                     <p class="text-slate-800 font-semibold text-sm">{product.carton}</p>
                   </div>
                 </div>
 
                 <a 
                   href="/contact" 
-                  class="block w-full text-center bg-slate-900 text-white py-3 rounded-lg font-bold text-sm hover:bg-blue-600 transition-colors shadow-sm"
+                  class={`block w-full text-center py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-sm ${
+                    product.inStock 
+                      ? 'bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-blue-600 hover:to-blue-700 hover:shadow-md' 
+                      : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                  }`}
+                  {...(!product.inStock && { onClick: (e) => e.preventDefault() })}
                 >
-                  Inquire for Pricing
+                  {product.inStock ? 'Inquire for Pricing →' : 'Contact for Restock'}
                 </a>
               </div>
             </div>
           ))}
         </div>
+        
+        <!-- Empty state -->
+        <div id="empty-state" class="hidden text-center py-16">
+          <div class="text-6xl mb-4">🔍</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">No products found</h3>
+          <p class="text-slate-500">Try adjusting your search or filter to find what you're looking for.</p>
+          <button id="reset-filters" class="mt-4 text-blue-600 font-medium hover:underline">Reset all filters</button>
+        </div>
       </div>
     </section>
 
-    <!-- 4. NO-STOCK NOTICE / CTA -->
-    <section class="py-16 bg-blue-50">
-      <div class="max-w-3xl mx-auto text-center px-4">
-        <h2 class="text-2xl font-bold text-slate-900 mb-4">Don't see what you're looking for?</h2>
-        <p class="text-slate-600 mb-8">
+    <!-- 4. FEATURED BANNER - Enhanced with gradient -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-600">
+      <div class="max-w-4xl mx-auto text-center px-4">
+        <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-6">
+          <span class="text-white text-sm font-medium">💡 Need Something Specific?</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Don't see what you're looking for?</h2>
+        <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
           We have hundreds of additional products arriving weekly at our Mildenhall warehouse. 
           Contact our sourcing team with your specific requirements.
         </p>
-        <a href="/contact" class="inline-flex items-center text-blue-600 font-bold hover:gap-2 transition-all">
+        <a 
+          href="/contact" 
+          class="inline-flex items-center gap-2 bg-white text-blue-600 font-bold px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group"
+        >
           Contact Sourcing Team 
-          <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
         </a>
       </div>
     </section>
-  </main>
 
-  
+    <!-- 5. BULK ORDER INFO - New section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center p-6">
+            <div class="text-3xl mb-3">🚚</div>
+            <h3 class="font-bold text-slate-900 mb-2">Free Delivery on Bulk Orders</h3>
+            <p class="text-slate-500 text-sm">Orders over £500 qualify for free UK delivery</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="text-3xl mb-3">📋</div>
+            <h3 class="font-bold text-slate-900 mb-2">Trade Account Benefits</h3>
+            <p class="text-slate-500 text-sm">Exclusive pricing, credit terms, and priority support</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="text-3xl mb-3">✅</div>
+            <h3 class="font-bold text-slate-900 mb-2">Quality Guaranteed</h3>
+            <p class="text-slate-500 text-sm">All products undergo strict quality control checks</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
 
-<style>
-  /* Utility to hide scrollbar but allow scrolling */
+<style is:global>
+  /* Hide scrollbar but allow scrolling */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Animation for product cards */
+  .product-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Stagger animation delay for cards */
+  .product-card {
+    animation-delay: calc(var(--index, 0) * 0.03s);
+  }
 </style>
+
+<script>
+  // Product filtering functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const products = document.querySelectorAll('.product-card');
+    const categoryButtons = document.querySelectorAll('.category-filter');
+    const searchInput = document.getElementById('search-input');
+    const productCountSpan = document.getElementById('product-count');
+    const emptyState = document.getElementById('empty-state');
+    const productGrid = document.getElementById('product-grid');
+    const resetBtn = document.getElementById('reset-filters');
+    
+    let activeCategory = 'all';
+    let searchTerm = '';
+    
+    // Set animation delays
+    products.forEach((card, idx) => {
+      card.style.setProperty('--index', idx);
+    });
+    
+    function filterProducts() {
+      let visibleCount = 0;
+      
+      products.forEach(card => {
+        const category = card.dataset.category;
+        const name = card.dataset.name;
+        const id = card.dataset.id;
+        
+        const matchesCategory = activeCategory === 'all' || category === activeCategory;
+        const matchesSearch = searchTerm === '' || 
+          name.includes(searchTerm) || 
+          id.includes(searchTerm);
+        
+        if (matchesCategory && matchesSearch) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Update count
+      productCountSpan.textContent = visibleCount;
+      
+      // Show/hide empty state
+      if (visibleCount === 0) {
+        productGrid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+      } else {
+        productGrid.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+      }
+    }
+    
+    // Category filter click handler
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button styling
+        categoryButtons.forEach(b => {
+          b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-200');
+          b.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-600');
+        });
+        btn.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-600');
+        btn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-200');
+        
+        // Update active category
+        activeCategory = btn.dataset.category;
+        filterProducts();
+      });
+    });
+    
+    // Search input handler
+    searchInput.addEventListener('input', (e) => {
+      searchTerm = e.target.value.toLowerCase();
+      filterProducts();
+    });
+    
+    // Reset filters
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchTerm = '';
+        activeCategory = 'all';
+        
+        // Reset category button styling
+        categoryButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-200');
+          btn.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-600');
+        });
+        categoryButtons[0].classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-600');
+        categoryButtons[0].classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-200');
+        
+        filterProducts();
+      });
+    }
+    
+    // Initial filter to set proper state
+    filterProducts();
+  });
+</script>
