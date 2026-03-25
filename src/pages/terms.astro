@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = "October 2023";
+---
+
+<Layout title="Terms of Service | Heath Court Ltd">
+    <main class="bg-slate-50 py-16 px-4">
+    <div class="max-w-4xl mx-auto bg-white shadow-sm border border-slate-200 rounded-2xl overflow-hidden">
+      
+      <!-- Header -->
+      <div class="bg-slate-900 p-8 md:p-12 text-white text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Trade Terms & Conditions</h1>
+        <p class="text-slate-400 italic">Please read these terms carefully before placing a wholesale order.</p>
+        <p class="text-slate-500 text-sm mt-2">Last Updated: {lastUpdated}</p>
+      </div>
+
+      <!-- Content -->
+      <div class="p-8 md:p-12 text-slate-700 leading-relaxed space-y-10">
+        
+        <!-- 1. General -->
+        <section>
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+            <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+            General
+          </h2>
+          <p>
+            These terms and conditions apply to all wholesale transactions between **Heath Court Ltd** (registered at Unit A 82 James Carter Road, Mildenhall, IP28 7DE) and any business entity ("The Customer") purchasing household goods. By placing an order, you agree to be bound by these terms.
+          </p>
+        </section>
+
+        <!-- 2. Orders & Pricing -->
+        <section>
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+            <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">2</span>
+            Orders & Pricing
+          </h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>All orders are subject to a **Minimum Order Quantity (MOQ)** as specified in our current catalog.</li>
+            <li>Prices are quoted in GBP and exclude VAT unless otherwise stated.</li>
+            <li>We reserve the right to adjust pricing without prior notice due to changes in manufacturing or shipping costs.</li>
+            <li>Orders are only confirmed once we issue a formal Pro-forma Invoice or Order Confirmation.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Payment Terms -->
+        <section>
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+            <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">3</span>
+            Payment Terms
+          </h2>
+          <p>
+            Standard payment terms are **Payment in Advance** for all new trade accounts. Credit terms may be applied for established partners following a successful credit check and at the sole discretion of Heath Court Ltd management. 
+          </p>
+        </section>
+
+        <!-- 4. Delivery & Logistics -->
+        <section>
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+            <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">4</span>
+            Delivery & Logistics
+          </h2>
+          <p class="mb-4">
+            Deliveries are dispatched from our warehouse in Mildenhall. 
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Delivery dates provided are estimates and not guaranteed.</li>
+            <li>Heath Court Ltd is not liable for delays caused by third-party freight carriers or customs.</li>
+            <li>Risk of loss or damage passes to the Customer upon delivery to the specified address.</li>
+          </ul>
+        </section>
+
+        <!-- 5. Claims & Returns -->
+        <section>
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+            <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">5</span>
+            Claims & Returns
+          </h2>
+          <p>
+            Any shortages or damages must be reported in writing within **3 working days** of receipt of goods. Damaged goods must be held for inspection or returned only upon written authorization. As a B2B wholesaler, we do not offer "sale or return" facilities.
+          </p>
+        </section>
+
+        <!-- 6. Retention of Title -->
+        <section>
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+            <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">6</span>
+            Retention of Title
+          </h2>
+          <p>
+            All goods remain the legal property of **Heath Court Ltd** until full payment has been received and cleared in our bank account.
+          </p>
+        </section>
+
+        <!-- 7. Governing Law -->
+        <section>
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+            <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">7</span>
+            Governing Law
+          </h2>
+          <p>
+            These terms are governed by and construed in accordance with the laws of **England and Wales**. Any disputes shall be subject to the exclusive jurisdiction of the English courts.
+          </p>
+        </section>
+
+        <!-- Footer Contact -->
+        <div class="mt-12 pt-12 border-t border-slate-100 text-center">
+          <p class="text-sm text-slate-500 mb-4">Questions regarding our terms?</p>
+          <a href="/contact" class="inline-block px-6 py-2 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors">
+            Contact Trade Department
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</Layout>
